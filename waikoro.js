@@ -43,7 +43,7 @@ javascript:(function(){
 	}else{pot = 0;}
 
 	const temp_p_box = p_box.innerHTML;
-	p_box.innerHTML = "<button onclick=\"loction.href='#box3'\">ページ下部へ</button>　　　　　" + temp_p_box;
+	p_box.innerHTML = "<button onclick=\"location.href='#box3'\">ページ下部へ</button>　　　　　" + temp_p_box;
 
 	if(chars.length!=char_bet_user.length){
 		for(i=0;i<chars.length;i++){
@@ -64,7 +64,6 @@ javascript:(function(){
 	}
 
 	const box3 = p_box.nextElementSibling.nextElementSibling;
-	box3.setAttribute("name", "box3");
 	const bv = box3.innerHTML.match(/BET額\d+/g);
 	if(bv) {
 		for(i=0;i<bv.length;i++){
@@ -75,6 +74,9 @@ javascript:(function(){
 			}
 		}
 	}
+	const anker = document.createElement("a");
+	box3.appendChild(anker);
+	anker.setAttribute("name", "box3");
 
 	for(i=0;i<chars.length;i++){
 		const disp = document.createElement("p");
