@@ -66,7 +66,7 @@ javascript:(function(){
 	}
 
 	for(i=0;i<chars.length;i++){
-		const n = chars[i].innerHTML.match.(/>.+<br>HP/g);
+		const n = chars[i].innerHTML.match(/>.+<br>HP/g);
 		if(n!=null){
 			const name = n[0].replace("<br>HP","").replace(">","");
 			char_names.push(name);
