@@ -79,17 +79,36 @@ javascript:(function(){
 	console.log(bv);
 	console.log(cn);
 	if(bv && cn) {
+		let x = 0;
 		for(i=0;i<bv.length;i++){
 			const n = cn[i].replace(/<label for=\"ouen\d*\" class=\"label\">/,"").replace(/<span/,"");
 			console.log("n: " + n);
-			if(char_names[i]!=n){
-				bet_values.push(300);
-			}
+			// if(char_names[i]!=n){
+			// 	bet_values.push(300);
+			// }
 			let v = bv[i].replace(/.*BET額/,"");
 			console.log("v: " + v)
 			v = parseInt(v);
-			if(!isNaN(v)){
-				bet_values.push(v);
+			if(char_names[i]==n){
+				if(!isNaN(v)){
+					bet_values.push(v);
+				}
+			}else{
+				let index = i;
+				while(char_names[index]!=n && index<chars.length){
+					index++;
+					if(char_names[index]==n){
+						if(!isNaN(v)){
+							if(x<index-i){
+								x = index - i;
+								for(j=0;j<x;j++){
+									bet_values.push(300);
+								}
+								bet_values.push(v);
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -660,7 +679,7 @@ javascript:(function(){
 			}
 			if(button_state[i]["orange"]==1){
 				// buttons[i].style.backgroundImage = "url(https://i.imgur.com/wqWe37n.png)";
-				buttons[i].style.backgroundImage = "url(https://i.imgur.com/zW9FJqJ.gif)";
+				buttons[i].style.backgroundImage = "url(https://i.imgur.com/GiYqaQH.gif)";
 				buttons[i].style.backgroundSize = "contain";
 				buttons[i].style.backgroundRepeat = "no-repeat";
 				buttons[i].style.backgroundPosition = "center";
