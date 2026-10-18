@@ -66,7 +66,7 @@ javascript:(function(){
 	}
 
 	for(i=0;i<chars.length;i++){
-		const n = chars[i].innerHTML.match(/>.+<br>HP/g);
+		const n = chars[i].innerHTML.match(/[^<>]+<br>HP/g);
 		if(n!=null){
 			const name = n[0].replace("<br>HP","").replace(">","");
 			char_names.push(name);
@@ -660,7 +660,7 @@ javascript:(function(){
 			}
 			if(button_state[i]["orange"]==1){
 				// buttons[i].style.backgroundImage = "url(https://i.imgur.com/wqWe37n.png)";
-				buttons[i].style.backgroundImage = "url(https://usagif.com/wp-content/uploads/gifs/fire-57.gif)";
+				buttons[i].style.backgroundImage = "url(https://i.imgur.com/zW9FJqJ.gif)";
 				buttons[i].style.backgroundSize = "contain";
 				buttons[i].style.backgroundRepeat = "no-repeat";
 				buttons[i].style.backgroundPosition = "center";
