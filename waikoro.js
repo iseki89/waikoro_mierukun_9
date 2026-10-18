@@ -75,7 +75,7 @@ javascript:(function(){
 
 	const box3 = p_box.nextElementSibling.nextElementSibling;
 	const bv = box3.innerHTML.match(/BET額\d+/g);
-	const cn = box3.innerHTML.match(/<label for=\"ouen2\" class=\"label\">[^<>]*<span/g);
+	const cn = box3.innerHTML.match(/<label for=\"ouen\d*\" class=\"label\">[^<>]*<span/g);
 	console.log(bv);
 	console.log(cn);
 	if(bv && cn) {
