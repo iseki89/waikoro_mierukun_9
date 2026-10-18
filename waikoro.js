@@ -9,6 +9,8 @@ javascript:(function(){
 	const user_sum = {};
 	const user_bet = {};
 	const bet_values = [];
+	const char_names = [];
+	const user_ranking = {};
 	let sum = 0;
 	let bets = 0;
 	let test_bet = 0;
@@ -42,8 +44,8 @@ javascript:(function(){
 		pot = parseInt(pot);
 	}else{pot = 0;}
 
-	const temp_p_box = p_box.innerHTML;
-	p_box.innerHTML = "<button onclick=\"location.href='#box3'\">ページ下部へ</button>　　　　　" + temp_p_box;
+	// const temp_p_box = p_box.innerHTML;
+	// p_box.innerHTML = "<button onclick=\"location.href='#box3'\">ページ下部へ</button>　　　　　" + temp_p_box;
 
 	if(chars.length!=char_bet_user.length){
 		for(i=0;i<chars.length;i++){
@@ -63,20 +65,35 @@ javascript:(function(){
 		as[i].href = "javascript:void(0)";
 	}
 
+	for(i=0;i<chars.length;i++){
+		const n = chars[i].innerHTML.match.(/>.+<br>HP/g);
+		if(n!=null){
+			const name = n[0].replace("<br>HP","").replace(">","");
+			char_names.push(name);
+		}
+	}
+
 	const box3 = p_box.nextElementSibling.nextElementSibling;
-	const bv = box3.innerHTML.match(/BET額\d+/g);
+	const bv = box3.innerHTML.match(/[^<>]*BET額\d+/g);
+	console.log(bv);
 	if(bv) {
 		for(i=0;i<bv.length;i++){
-			let v = bv[i].replace("BET額","");
+			const n = bv[i].replace("(BET額\d+","");
+			console.log("n: " + n);
+			if(char_names[i]!=n){
+				bet_values.push(300);
+			}
+			let v = bv[i].replace(".*BET額","");
+			console.log("v: " + v)
 			v = parseInt(v);
 			if(!isNaN(v)){
 				bet_values.push(v);
 			}
 		}
 	}
-	const anker = document.createElement("a");
-	box3.prepend(anker);
-	anker.setAttribute("name", "box3");
+	// const anker = document.createElement("a");
+	// box3.prepend(anker);
+	// anker.setAttribute("name", "box3");
 
 
 	for(i=0;i<chars.length;i++){
@@ -87,17 +104,17 @@ javascript:(function(){
 		disp.after(user_reward_p);
 		user_reward_p.classList.add("user_reward");
 
-		const b = chars[i].getElementsByTagName("b");
-		for(j=0;j<b.length;j++){
-			const hp = b[j].innerHTML.match(/^0<br>$/);
-			if(hp!=null){
-				char_state[i]["die"] = 1;
-				chars[i].style.backgroundColor = "rgba(0,0,0,0.25)";
-				const imgs = chars[i].getElementsByTagName("img");
-				imgs[0].style.opacity = 0.5;
-				bet_values.splice(i,0,300);
-			}
-		}
+		// const b = chars[i].getElementsByTagName("b");
+		// for(j=0;j<b.length;j++){
+		// 	const hp = b[j].innerHTML.match(/^0<br>$/);
+		// 	if(hp!=null){
+		// 		char_state[i]["die"] = 1;
+		// 		chars[i].style.backgroundColor = "rgba(0,0,0,0.25)";
+		// 		const imgs = chars[i].getElementsByTagName("img");
+		// 		imgs[0].style.opacity = 0.5;
+		// 		bet_values.splice(i,0,300);
+		// 	}
+		// }
 
 		const index = i;
 
