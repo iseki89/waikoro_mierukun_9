@@ -100,10 +100,10 @@ javascript:(function(){
 					if(char_names[index]==n){
 						if(!isNaN(v)){
 							if(x<index-i){
-								x = index - i;
-								for(j=0;j<x;j++){
+								for(j=0;j<(index-i);j++){
 									bet_values.push(300);
 								}
+								x = index - i;
 							}
 							bet_values.push(v);
 						}
@@ -678,8 +678,8 @@ javascript:(function(){
 				}
 			}
 			if(button_state[i]["orange"]==1){
-				// buttons[i].style.backgroundImage = "url(https://i.imgur.com/wqWe37n.png)";
-				buttons[i].style.backgroundImage = "url(https://i.imgur.com/GiYqaQH.gif)";
+				buttons[i].style.backgroundImage = "url(https://i.imgur.com/wqWe37n.png)";
+				// buttons[i].style.backgroundImage = "url(https://i.imgur.com/GiYqaQH.gif)";
 				buttons[i].style.backgroundSize = "contain";
 				buttons[i].style.backgroundRepeat = "no-repeat";
 				buttons[i].style.backgroundPosition = "center";
