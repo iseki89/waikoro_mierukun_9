@@ -74,16 +74,16 @@ javascript:(function(){
 	}
 
 	const box3 = p_box.nextElementSibling.nextElementSibling;
-	const bv = box3.innerHTML.match(/[^<>]*BET額\d+/g);
+	const bv = box3.innerHTML.match(/>.*BET額\d+/g);
 	console.log(bv);
 	if(bv) {
 		for(i=0;i<bv.length;i++){
-			const n = bv[i].replace("(BET額\d+","");
+			const n = bv[i].replace(/\(BET額\d+/,"").replace(">","");
 			console.log("n: " + n);
 			if(char_names[i]!=n){
 				bet_values.push(300);
 			}
-			let v = bv[i].replace(".*BET額","");
+			let v = bv[i].replace(/.*BET額/,"");
 			console.log("v: " + v)
 			v = parseInt(v);
 			if(!isNaN(v)){
