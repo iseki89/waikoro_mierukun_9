@@ -100,7 +100,7 @@ javascript:(function(){
 					if(char_names[index]==n){
 						if(!isNaN(v)){
 							if(x<index-i){
-								for(j=0;j<(x-(index-i));j++){
+								for(j=0;j<((index-i)-x);j++){
 									bet_values.push(300);
 								}
 								x = index - i;
