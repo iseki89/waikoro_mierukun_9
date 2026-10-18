@@ -104,8 +104,8 @@ javascript:(function(){
 								for(j=0;j<x;j++){
 									bet_values.push(300);
 								}
-								bet_values.push(v);
 							}
+							bet_values.push(v);
 						}
 					}
 				}
