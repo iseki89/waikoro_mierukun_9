@@ -79,14 +79,12 @@ javascript:(function(){
 	console.log(bv);
 	console.log(cn);
 	if(bv && cn) {
-		for(i=0;i<cn.length;i++){
-			const n = cn[i].replace(/<label for=\"ouen2\" class=\"label\">/,"").replace(/<span/,"");
+		for(i=0;i<bv.length;i++){
+			const n = cn[i].replace(/<label for=\"ouen\d*\" class=\"label\">/,"").replace(/<span/,"");
 			console.log("n: " + n);
 			if(char_names[i]!=n){
 				bet_values.push(300);
 			}
-		}
-		for(i=0;i<bv.length;i++){
 			let v = bv[i].replace(/.*BET額/,"");
 			console.log("v: " + v)
 			v = parseInt(v);
