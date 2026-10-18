@@ -74,11 +74,13 @@ javascript:(function(){
 	}
 
 	const box3 = p_box.nextElementSibling.nextElementSibling;
-	const bv = box3.innerHTML.match(/[^<>]*BET額\d+/g);
+	const bv = box3.innerHTML.match(/BET額\d+/g);
+	const cn = box3.innerHTML.match(/<label for=\"ouen2\" class=\"label\">.*<span/g);
 	console.log(bv);
-	if(bv) {
+	console.log(cn);
+	if(bv && cn) {
 		for(i=0;i<bv.length;i++){
-			const n = bv[i].replace(/\(BET額\d+/,"");
+			const n = cn[i].replace(/<label for=\"ouen2\" class=\"label\">/,"").replace(/<span/,"");
 			console.log("n: " + n);
 			if(char_names[i]!=n){
 				bet_values.push(300);
@@ -91,6 +93,7 @@ javascript:(function(){
 			}
 		}
 	}
+	console.log(bet_values);
 	// const anker = document.createElement("a");
 	// box3.prepend(anker);
 	// anker.setAttribute("name", "box3");
